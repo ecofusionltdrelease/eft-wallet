@@ -649,7 +649,6 @@ Future<String> sendEFT(String receiver, double amount, String privateKey) async 
     final Decimal decimalAmount = Decimal.parse(amount.toString()) * Decimal.parse('1e18');
     final BigInt tokenAmount = BigInt.parse(decimalAmount.toStringAsFixed(0));
 
-    // Define the ABI for the ERC-20 contract methods we will call
     String abi = '''
     [
       {
@@ -720,7 +719,7 @@ Future<String> sendEFT(String receiver, double amount, String privateKey) async 
       chainId: 56, // BSC Chain ID
     );
 
-    print(transactionHash);
+    print("Transaction hash: " + transactionHash);
     return transactionHash; // Return the transaction hash
   } catch (e) {
     return "Transaction failed: $e"; // Return the error message if something goes wrong
